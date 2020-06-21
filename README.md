@@ -1,5 +1,5 @@
 # Ansible Role: DDClient
-[![Build Status](https://travis-ci.com/mivek/ddclient.svg?branch=master)](https://travis-ci.com/mivek/ddclient)
+[![Build Status](https://travis-ci.com/mivek/ansible-role-ddclient.svg?token=Nxd1CoxuZDnwzK6Yq6sV&branch=master)](https://travis-ci.com/mivek/ansible-role-ddclient)
 =========
 
 This role installs and launches a [ddclient](https://ddclient.net/) service.
