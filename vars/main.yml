@@ -1,0 +1,3 @@
+---
+# vars file for ddclient
+_conf_location: /etc/ddclient.conf

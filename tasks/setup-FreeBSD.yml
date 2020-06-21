@@ -1,0 +1,5 @@
+- name: Install ddclient.
+  pkgng:
+    name: ddclient
+    state: present
+  become: true

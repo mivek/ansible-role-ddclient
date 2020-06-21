@@ -1,0 +1,18 @@
+---
+# tasks file for ddclient
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- include_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include_tasks: setup-FreeBSD.yml
+  when: ansible_os_family == 'FreeBSD'
+
+
+- name: Create configuration file
+  template:
+    src: templates/config.j2
+    dest: "{{ _conf_location }}"
+  notify:
+    - Restart ddclient

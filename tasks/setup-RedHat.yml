@@ -1,0 +1,5 @@
+- name: Install ddclient.
+  package:
+    name: ddclient
+    state: present
+  become: true

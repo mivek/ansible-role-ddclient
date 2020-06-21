@@ -1,0 +1,24 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: populate service facts
+      service_facts:
+
+    - name: Check service is running
+      assert:
+        that:
+          - ansible_facts.services["ddclient"] is defined
+    
+    - name: Retrieve configuration
+      stat:
+        path: /etc/ddclient.conf 
+      register: conf
+    
+    - name: Check that configuration exists
+      assert:
+        that:
+          - conf.stat.exists

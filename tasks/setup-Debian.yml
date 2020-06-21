@@ -1,0 +1,6 @@
+- name: Install ddclient
+  apt:
+    name: ddclient
+    state: present
+    update_cache: yes
+  become: true

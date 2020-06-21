@@ -1,0 +1,21 @@
+galaxy_info:
+  author: mivek
+  description: Installs and configures ddclient
+
+  license: MIT
+
+  min_ansible_version: 2.9
+
+  platforms:
+  - name: Debian
+    versions:
+      - all
+  - name: EL
+    versions:
+      - 6
+
+  galaxy_tags:
+    - ddclient
+    - web
+    - networking
+    - system

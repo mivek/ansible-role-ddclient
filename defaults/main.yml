@@ -1,0 +1,19 @@
+---
+# defaults file for ddclient
+daemon: 300
+
+ssl: 'yes'
+
+configs:
+  - 
+    protocol: dnspark
+    use: null
+    server: null
+    backupmx: null
+    mx: null
+    mxpri: null
+    wildcard: null
+    login: login
+    password: password
+    hosts: 
+      - host
