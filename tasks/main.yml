@@ -12,7 +12,7 @@
 
 - name: Create configuration file
   template:
-    src: templates/config.j2
+    src: "{{ conf_template }}"
     dest: "{{ _conf_location }}"
   notify:
     - Restart ddclient
