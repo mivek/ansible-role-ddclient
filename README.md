@@ -16,6 +16,8 @@ Variables are from [ddclient configuration](https://ddclient.net/usage.html#usag
 ### Default variables
 
 ```(yaml)
+conf_template: templates/config.j2
+
 daemon: 0 # The delay of the daemon.
 
 ssl: yes # Whether ddclient should use ssl.
@@ -59,7 +61,7 @@ Including an example of how to use your role (for instance, with variables passe
           vars:
             daemon: 60
             configs:
-              - 
+              -
                 protocol: dyndns2
                 login: myLogin
                 password: myPassword
@@ -69,7 +71,7 @@ Including an example of how to use your role (for instance, with variables passe
                 mx: null
                 mxpri: null
                 wildcard: null
-                hosts: 
+                hosts:
                   - myhost.dyndns.org
 ## License
 -------

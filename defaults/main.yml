@@ -1,11 +1,14 @@
 ---
 # defaults file for ddclient
+
+conf_template: templates/config.j2
+
 daemon: 300
 
 ssl: 'yes'
 
 configs:
-  - 
+  -
     protocol: dnspark
     use: null
     server: null
@@ -15,5 +18,5 @@ configs:
     wildcard: null
     login: login
     password: password
-    hosts: 
+    hosts:
       - host
