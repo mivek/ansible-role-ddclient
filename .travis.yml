@@ -1,34 +1,34 @@
----
-language: python
-services: docker
-
-env:
-  global:
-    - ROLE_NAME: ddclient
-    - MOLECULE_NO_LOG: "false"
-  matrix:
-    - MOLECULE_DISTRO: debian11
-    - MOLECULE_DISTRO: debian10
-    - MOLECULE_DISTRO: debian9
-    - MOLECULE_DISTRO: debian8
-    - MOLECULE_DISTRO: centos6
-    - MOLECULE_DISTRO: centos7
-    - MOLECULE_DISTRO: centos8
-    - MOLECULE_DISTRO: ubuntu2004
-    - MOLECULE_DISTRO: ubuntu1804
-    - MOLECULE_DISTRO: fedora34
-
-
-install:
-  # Install test dependencies.
-  - pip install ansible molecule[docker] yamllint ansible-lint docker
-
-before_script:
-  # Use actual Ansible Galaxy role name for the project directory.
-  - cd ../
-  - mv ansible-role-$ROLE_NAME mivek.$ROLE_NAME
-  - cd mivek.$ROLE_NAME
-
-script:
-  # Run test with molecule
-  - molecule test
+#---
+#language: python
+#services: docker
+#
+#env:
+#  global:
+#    - ROLE_NAME: ddclient
+#    - MOLECULE_NO_LOG: "false"
+#  matrix:
+#    - MOLECULE_DISTRO: debian11
+#    - MOLECULE_DISTRO: debian10
+#    - MOLECULE_DISTRO: debian9
+#    - MOLECULE_DISTRO: debian8
+#    - MOLECULE_DISTRO: centos6
+#    - MOLECULE_DISTRO: centos7
+#    - MOLECULE_DISTRO: centos8
+#    - MOLECULE_DISTRO: ubuntu2004
+#    - MOLECULE_DISTRO: ubuntu1804
+#    - MOLECULE_DISTRO: fedora34
+#
+#
+#install:
+#  # Install test dependencies.
+#  - pip install ansible molecule[docker] yamllint ansible-lint docker flake8
+#
+#before_script:
+#  # Use actual Ansible Galaxy role name for the project directory.
+#  - cd ../
+#  - mv ansible-role-$ROLE_NAME mivek.$ROLE_NAME
+#  - cd mivek.$ROLE_NAME
+#
+#script:
+#  # Run test with molecule
+#  - molecule test
