@@ -1,6 +1,5 @@
 - name: Install ddclient
-  apt:
+  ansible.builtin.apt:
     name: ddclient
     state: present
     update_cache: yes
-  become: true

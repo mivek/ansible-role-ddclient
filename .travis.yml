@@ -7,10 +7,16 @@ env:
     - ROLE_NAME: ddclient
     - MOLECULE_NO_LOG: "false"
   matrix:
+    - MOLECULE_DISTRO: debian11
     - MOLECULE_DISTRO: debian10
     - MOLECULE_DISTRO: debian9
     - MOLECULE_DISTRO: debian8
     - MOLECULE_DISTRO: centos6
+    - MOLECULE_DISTRO: centos7
+    - MOLECULE_DISTRO: centos8
+    - MOLECULE_DISTRO: ubuntu2004
+    - MOLECULE_DISTRO: ubuntu1804
+    - MOLECULE_DISTRO: fedora34
 
 
 install:
@@ -26,6 +32,3 @@ before_script:
 script:
   # Run test with molecule
   - molecule test
-
-notifications:
- webhooks: https://galaxy.ansible.com/api/v1/notifications/

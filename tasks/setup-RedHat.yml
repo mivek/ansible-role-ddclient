@@ -1,5 +1,4 @@
 - name: Install ddclient.
-  package:
+  ansible.builtin.package:
     name: ddclient
     state: present
-  become: true

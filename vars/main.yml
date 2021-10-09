@@ -1,3 +1,13 @@
 ---
 # vars file for ddclient
-_conf_location: /etc/ddclient.conf
+__ddclient_configuration_directory: /etc/ddclient
+__ddclient_configuration_location: "{{ __ddclient_configuration_directory }}/ddclient.conf"
+__ddclient_download_url: https://github.com/ddclient/ddclient/archive/refs/tags/v{{ ddclient_version }}.tar.gz
+__ddclient_download_location: /tmp/ddclient-{{ ddclient_version }}.tar.gz
+__ddclient_unarchive_location: /tmp
+
+__ddclient_service_file: /etc/systemd/system/ddclient.service
+__ddclient_prerequisite:
+  - g++
+  - perl
+  - make

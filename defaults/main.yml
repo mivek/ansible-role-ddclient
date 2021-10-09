@@ -1,13 +1,14 @@
 ---
 # defaults file for ddclient
 
-conf_template: templates/config.j2
+ddclient_version: 3.9.1 # Only when installing from source
+ddclient_configuration_template: templates/ddclient.conf.j2
+ddclient_service_template: templates/ddclient.service.j2
+ddclient_daemon: 300
+ddclient_install_from_source: false
+ddclient_ssl: 'yes'
 
-daemon: 300
-
-ssl: 'yes'
-
-configs:
+ddclient_configs:
   -
     protocol: dnspark
     use: null
