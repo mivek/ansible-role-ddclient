@@ -16,6 +16,12 @@
     update_cache: true
   when: ansible_os_family == 'RedHat'
 
+- name: Install specific package for Fedora
+  ansible.builtin.yum:
+    state: present
+    name: perl-Sys-Hostname-Long
+  when: ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora'
+
 - name: Make sure prerequisite packages are installed for FreeBSD
   community.general.pkgng:
     name: "{{ __ddclient_prerequisite }}"
