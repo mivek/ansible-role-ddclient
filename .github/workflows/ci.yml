@@ -29,13 +29,12 @@ jobs:
           python-version: '3.x'
 
       - name: Install test dependencies.
-        run: pip3 install yamllint flake8 ansible-lint
+        run: pip3 install yamllint flake8
 
       - name: Lint code.
         run: |
           yamllint .
           flake8
-          ansible-lint
   molecule:
     name: Molecule
     runs-on: ubuntu-latest
