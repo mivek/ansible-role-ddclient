@@ -1,7 +1,7 @@
 galaxy_info:
   author: mivek
-  description: Installs and configures ddclient
   role_name: ddclient
+  description: Installs and configures ddclient
   license: MIT
 
   min_ansible_version: 2.9

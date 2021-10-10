@@ -1,0 +1,16 @@
+---
+
+ddclient_install_from_source: true
+ddclient_configs:
+  -
+    protocol: dyndns2
+    login: myLogin
+    password: myPassword
+    use: web
+    server: null
+    backupmx: null
+    mx: null
+    mxpri: null
+    wildcard: null
+    hosts:
+      - myhost.dyndns.org

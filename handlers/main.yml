@@ -1,8 +1,7 @@
 ---
-# handlers file for ddclient
-- name: Restart ddclient
-  service:
+- name: configure_systemd
+  ansible.builtin.systemd:
     name: ddclient
-    state: restarted
     enabled: true
-  become: true
+    state: restarted
+    daemon_reload: true

@@ -1,0 +1,5 @@
+---
+
+__ddclient_prerequisite:
+  - libdata-validate-ip-perl
+  - libio-socket-ssl-perl

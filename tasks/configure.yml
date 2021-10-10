@@ -1,0 +1,33 @@
+---
+- name: Create the ddclient configuration folder
+  ansible.builtin.file:
+    path: "{{ __ddclient_configuration_directory }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0750
+
+- name: Create configuration file
+  ansible.builtin.template:
+    src: "{{ ddclient_configuration_template }}"
+    dest: "{{ __ddclient_configuration_location }}"
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Create the cache directory
+  ansible.builtin.file:
+    path: "{{ __ddclient_cache_directory }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0750'
+
+- name: Create the systemd file
+  ansible.builtin.template:
+    src: "{{ ddclient_service_template }}"
+    dest: "{{ __ddclient_service_file }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: configure_systemd

@@ -1,0 +1,49 @@
+---
+- name: Include OS-specific variables (Debian).
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Make sure prerequisite packages are installed for Debian
+  ansible.builtin.apt:
+    name: "{{ __ddclient_prerequisite }}"
+    state: present
+    update_cache: true
+  when: ansible_os_family == 'Debian'
+
+- name: Make sure prerequisite packages are installed for RedHat
+  ansible.builtin.yum:
+    name: "{{ __ddclient_prerequisite }}"
+    state: present
+    update_cache: true
+  when: ansible_os_family == 'RedHat'
+
+- name: Make sure prerequisite packages are installed for FreeBSD
+  community.general.pkgng:
+    name: "{{ __ddclient_prerequisite }}"
+    state: present
+  when: ansible_os_family == 'FreeBSD'
+
+- name: Download the tar file
+  ansible.builtin.get_url:
+    url: "{{ __ddclient_download_url }}"
+    dest: "{{ __ddclient_download_location }}"
+    owner: root
+    group: root
+
+- name: Unarchive the archive
+  ansible.builtin.unarchive:
+    src: "{{ __ddclient_download_location }}"
+    remote_src: true
+    dest: "/tmp"
+    owner: root
+    group: root
+    list_files: true
+  register: unarchived_folder
+
+- name: Move the exec
+  ansible.builtin.copy:
+    remote_src: true
+    src: "{{ unarchived_folder.dest }}/{{ unarchived_folder.files[0] }}/ddclient"
+    dest: /usr/sbin/ddclient
+    owner: root
+    group: root
+    mode: '0751'
