@@ -1,5 +1,5 @@
 - name: Install ddclient.
-  package:
+  ansible.builtin.yum:
     name: ddclient
     state: present
-  become: true
+    update_cache: true

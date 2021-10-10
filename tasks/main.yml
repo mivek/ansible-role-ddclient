@@ -1,18 +1,20 @@
 ---
 # tasks file for ddclient
-- include_tasks: setup-Debian.yml
-  when: ansible_os_family == 'Debian'
+- name: Install on Debian
+  ansible.builtin.include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian' and not ddclient_install_from_source
 
-- include_tasks: setup-RedHat.yml
-  when: ansible_os_family == 'RedHat'
+- name: Install on RedHat
+  ansible.builtin.include_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat' and not ddclient_install_from_source
 
-- include_tasks: setup-FreeBSD.yml
-  when: ansible_os_family == 'FreeBSD'
+- name: Install on FreeBSD
+  ansible.builtin.include_tasks: setup-FreeBSD.yml
+  when: ansible_os_family == 'FreeBSD' and not ddclient_install_from_source
 
+- name: Install from source
+  ansible.builtin.include_tasks: install_source.yml
+  when: ddclient_install_from_source
 
-- name: Create configuration file
-  template:
-    src: "{{ conf_template }}"
-    dest: "{{ _conf_location }}"
-  notify:
-    - Restart ddclient
+- name: Configure ddclient
+  ansible.builtin.include_tasks: configure.yml

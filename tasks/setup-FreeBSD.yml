@@ -1,5 +1,4 @@
 - name: Install ddclient.
-  pkgng:
+  community.general.pkgng:
     name: ddclient
     state: present
-  become: true

@@ -16,31 +16,42 @@ Variables are from [ddclient configuration](https://ddclient.net/usage.html#usag
 ### Default variables
 
 ```(yaml)
-conf_template: templates/config.j2
+ddclient_version: 3.9.1 # Only when installing from source
+ddclient_configuration_template: templates/ddclient.conf.j2
+ddclient_service_template: templates/ddclient.service.j2
+ddclient_daemon: 300
+ddclient_install_from_source: false
+ddclient_ssl: 'yes'
 
-daemon: 0 # The delay of the daemon.
-
-ssl: yes # Whether ddclient should use ssl.
-
-configs:              # List of configurations
+ddclient_configs:
   -
-    protocol: dnspark # The protocol to use
-    server: null      # The server of the protocol, update DNS information on 'host'
-    use: null         # How the should IP address be obtained
-    backupmx: null    # Indicates that DNSPark should be the secondary MX for this domain or host
-    mx: null          # A host MX’ing for this host or domain
-    mxpri: null       # MX priority.
-    wildcard: null    # Add a DNS wildcard CNAME record that points to {host}
-    login: login      # The user's login
-    password: pwd     # The user's password
-    hosts:            # List of hosts
-      - hosts1
-      - hosts2
+    protocol: dnspark
+    use: null
+    server: null
+    backupmx: null
+    mx: null
+    mxpri: null
+    wildcard: null
+    login: login
+    password: password
+    hosts:
+      - host
+
 ```
 ### Vars variable
 
 ```(yaml)
-_conf_location: /etc/ddclient.conf # The path of the ddclient configuration.
+__ddclient_configuration_directory: /etc/ddclient
+__ddclient_configuration_location: "{{ __ddclient_configuration_directory }}/ddclient.conf"
+__ddclient_download_url: https://github.com/ddclient/ddclient/archive/refs/tags/v{{ ddclient_version }}.tar.gz
+__ddclient_download_location: /tmp/ddclient-{{ ddclient_version }}.tar.gz
+__ddclient_unarchive_location: /tmp
+
+__ddclient_service_file: /etc/systemd/system/ddclient.service
+__ddclient_prerequisite:
+  - g++
+  - perl
+  - make
 ```
 
 ## Dependencies

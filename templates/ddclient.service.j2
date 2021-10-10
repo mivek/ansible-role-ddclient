@@ -1,0 +1,12 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=Dynamic DNS Update Client
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/ddclient -file {{ __ddclient_configuration_location }}
+
+[Install]
+WantedBy=multi-user.target
