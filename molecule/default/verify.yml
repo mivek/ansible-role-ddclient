@@ -14,7 +14,7 @@
         that:
           - ansible_facts.services["ddclient.service"] is defined
           - ansible_facts.services["ddclient.service"].state == 'running'
-          - ansible_facts.services["ddclient.service"].status == 'enabled'
+          - ansible_facts.services["ddclient.service"].status is match('enabled.*')
           - ansible_facts.services["ddclient.service"].source == 'systemd'
 
     - name: Retrieve configuration
