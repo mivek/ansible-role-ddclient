@@ -1,3 +1,4 @@
+#jinja2: trim_blocks:False
 # {{ ansible_managed  }}
 
 daemon={{ ddclient_daemon }}
@@ -21,6 +22,10 @@ mx={{ config.mx }}
     {% if config.mxpri %}
 mxpri={{ config.mxpri}},
     {% endif %}
+    {% if config.zone %}
+zone={{ config.zone }}
+    {% endif %}
+
 login={{ config.login }}
 password={{ config.password }}
 {{ config.hosts|join(', ')}}
