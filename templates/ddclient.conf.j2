@@ -6,23 +6,23 @@ ssl={{ ddclient_ssl }}
 syslog=yes
 
 {% for config in ddclient_configs %}
-    {% if config.use %}
+    {% if config.use is defined and config.use %}
 use={{ config.use }}
     {% endif %}
 protocol={{ config.protocol }}
-    {% if config.server %}
+    {% if config.server is defined and config.server %}
 server={{ config.server }}
     {% endif %}
-    {% if config.backupmx %}
+    {% if config.backupmx is defined and config.backupmx %}
 backupmx={{ config.backupmx }}    
     {% endif %}
-    {% if config.mx %}
+    {% if config.mx is defined and config.mx %}
 mx={{ config.mx }}
     {% endif %}
-    {% if config.mxpri %}
-mxpri={{ config.mxpri}},
+    {% if config.mxpri is defined and config.mxpri %}
+mxpri={{ config.mxpri }},
     {% endif %}
-    {% if config.zone %}
+    {% if config.zone is defined and config.zone %}
 zone={{ config.zone }}
     {% endif %}
 
