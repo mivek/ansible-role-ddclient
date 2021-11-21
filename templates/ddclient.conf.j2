@@ -1,3 +1,4 @@
+#jinja2: trim_blocks: True
 # {{ ansible_managed  }}
 
 daemon={{ ddclient_daemon }}
@@ -5,22 +6,26 @@ ssl={{ ddclient_ssl }}
 syslog=yes
 
 {% for config in ddclient_configs %}
-    {% if config.use %}
+*{% if config.use is defined and config.use %}
 use={{ config.use }}
-    {% endif %}
+{% endif %}
 protocol={{ config.protocol }}
-    {% if config.server %}
+{% if config.server is defined and config.server %}
 server={{ config.server }}
-    {% endif %}
-    {% if config.backupmx %}
+{% endif %}
+{% if config.backupmx is defined and config.backupmx %}
 backupmx={{ config.backupmx }}    
-    {% endif %}
-    {% if config.mx %}
+{% endif %}
+{% if config.mx is defined and config.mx %}
 mx={{ config.mx }}
-    {% endif %}
-    {% if config.mxpri %}
-mxpri={{ config.mxpri}},
-    {% endif %}
+{% endif %}
+{% if config.mxpri is defined and config.mxpri %}
+mxpri={{ config.mxpri }},
+{% endif %}
+{% if config.zone is defined and config.zone %}
+zone={{ config.zone }}
+{% endif %}
+
 login={{ config.login }}
 password={{ config.password }}
 {{ config.hosts|join(', ')}}

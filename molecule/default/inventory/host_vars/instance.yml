@@ -10,5 +10,6 @@ ddclient_configs:
     mx: null
     mxpri: null
     wildcard: null
+    zone: dyndns.org
     hosts:
       - myhost.dyndns.org
