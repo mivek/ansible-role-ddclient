@@ -5,11 +5,6 @@ ddclient_configs:
     login: myLogin
     password: myPassword
     use: web
-    server: null
-    backupmx: null
-    mx: null
-    mxpri: null
-    wildcard: null
     zone: dyndns.org
     hosts:
       - myhost.dyndns.org
