@@ -6,7 +6,7 @@ ssl={{ ddclient_ssl }}
 syslog=yes
 
 {% for config in ddclient_configs %}
-*{% if config.use is defined and config.use %}
+{% if config.use is defined and config.use %}
 use={{ config.use }}
 {% endif %}
 protocol={{ config.protocol }}
